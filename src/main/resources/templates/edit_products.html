@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http:/www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ApTeKa!</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class=" navbar-brand" href="#">Pharmacy</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/products}">Dorixona!</a>
+
+
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
+
+
+<div class="container" style="color: blue">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center"> O'zgartirish!</h1>
+            <div class="card-body">
+                <form th:action="@{/products/{id} (id=${products.id})}" th:object="${products}" method="post">
+
+                    <div class="form-group">
+
+                        <label class="control-label" for="productName">Nomi:</label>
+                        <input id="productName" class="form-control" th:field="*{productName}"
+                               required autofocus="autofocus" placeholder="Nomini kiriting" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="productRow">Qator:</label>
+                        <input id="productRow" class="form-control" th:field="*{productRow}"
+                               required autofocus="autofocus" placeholder="Qatorini kiriting" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="productPlace">Joy:</label>
+                        <input id="productPlace" class="form-control" th:field="*{productPlace}"
+                               required autofocus="autofocus" placeholder="Joyini kiriting" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="productPrice">Narx:</label>
+                        <input id="productPrice" class="form-control" th:field="*{productPrice}"
+                               required autofocus="autofocus" placeholder="Narxini kiriting" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="productTabletka">Tabletka:</label>
+                        <input id="productTabletka" class="form-control" th:field="*{productTabletka}"
+                               required autofocus="autofocus" placeholder="Tabletkami? (+ yoki -)" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="productUkol">Ukol:</label>
+                        <input id="productUkol" class="form-control"  th:field="*{productUkol}"
+                               required autofocus="autofocus" placeholder="Ukolmi? (+ yoki -)" />
+                    </div>
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary"> O'zgartirish</button>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

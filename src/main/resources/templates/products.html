@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http:/www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ApTeKa!</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class=" navbar-brand" href="#">Pharmacy</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/products}">Dorixona!</a>
+
+
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="row">
+        <h1>Dorilar ro'yxati!</h1>
+
+    </div>
+
+
+
+    <form  th:action="@{/products}">
+        <input width="800px" type="search" name="productName" id="productName" size="15" th:value="${productName}" required />
+        <input type="submit" placeholder="kiriting" class="btn btn-outline-primary" value="Qidirish!" />
+    </form>
+
+
+
+
+
+
+
+
+
+
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{/products/new}" class="btn btn-outline-success btn-sm mb-3"> Add product:</a>
+        </div>
+    </div>
+
+    <table class="table table-striped table-bordered">
+
+
+        <thead class="table-dark">
+        <tr>
+            <th>Nomi</th>
+            <th>Qator</th>
+            <th>Joy</th>
+            <th>Narx (so'm)</th>
+            <th>Tabletka</th>
+            <th>Ukol</th>
+            <th>O'zgartirish</th>
+        </tr>
+        </thead>
+
+
+        <tbody>
+        <tr th:each="products: ${products}">
+            <td th:text="${products.productName}"></td>
+            <td th:text="${products.productRow}"></td>
+            <td th:text="${products.productPlace}"></td>
+            <td th:text="${products.productPrice}"></td>
+            <td th:text="${products.productTabletka}"></td>
+            <td th:text="${products.productUkol}"></td>
+            <td >
+                <a th:href="@{/products/editProduct/{id} (id=${products.id})}"
+                   class="btn btn-outline-primary">Update</a>
+
+                <a th:href="@{/products/{id}(id=${products.id})}"
+                   class="btn btn-outline-danger">Delete</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
